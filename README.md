@@ -9,7 +9,7 @@ For MIT Maker Portfolio reviewers, I recommend focusing on these files:
 
 ### 1. Device Firmware and Web Server
 
-**[Web_Server.ino](Web_Server_FINAL/Web_Server.ino)**
+**[Web_Server.ino](Web_Server_FINAL/Web_Server_Final.ino)**
 
 The main microcontroller code. Reads knee-angle measurements from the AS5600 magnetic encoder, converts raw sensor values into degrees, creates a local Wi-Fi network, and transmits measurements through WebSockets.
 
