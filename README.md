@@ -23,10 +23,6 @@ Handles live wireless data reception, real-time graphing, session recording, loc
 
 My main gait-analysis algorithm. Detects individual walking gait cycles, filters irregular measurements, normalizes cycles, and calculates an average gait pattern.
 
-**[sprintGaitAnalysis.ts](The%20Website/lib/sprintGaitAnalysis.ts)**
-
-A separate algorithm designed to identify and analyze gait cycles during sprinting.
-
 **[gaitSimilarity.ts](The%20Website/lib/gaitSimilarity.ts)**
 
 Compares recorded gait cycles using mathematical alignment and root mean square error (RMSE) calculations.
