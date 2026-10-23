@@ -1,44 +1,61 @@
-# KnexFlex-Maker-Portfolio
-
-# KnexFlex — Gait Analysis Website
+# KnexFlex — Knee Motion Tracking and Gait Analysis
 **Developed by Andrew Metz**
 
-This website is part of KnexFlex, a wearable knee-motion tracking system I developed to help analyze gait patterns during rehabilitation. The platform processes recorded knee-angle data, calculates movement metrics, and allows users to visualize and compare gait cycles.
+KnexFlex is an affordable wearable device I developed to measure knee movement and analyze gait patterns during rehabilitation. The system combines an ESP32 microcontroller, magnetic rotary encoder, wireless data transmission, and custom gait-analysis software.
 
 ## Where to Look
 
 For MIT Maker Portfolio reviewers, I recommend focusing on these files:
 
-**1. [`lib/gaitAnalysis.ts`](lib/gaitAnalysis.ts) — Main Gait Analysis Algorithm**
+### 1. Device Firmware and Web Server
 
-The most important file. Contains my algorithm for detecting individual walking gait cycles, filtering irregular measurements, normalizing cycles, and calculating an average gait pattern.
+**[Web_Server.ino](Web_Server_FINAL/Web_Server.ino)**
 
-**2. [`lib/sprintGaitAnalysis.ts`](lib/sprintGaitAnalysis.ts) — Sprinting Analysis**
+The main microcontroller code. Reads knee-angle measurements from the AS5600 magnetic encoder, converts raw sensor values into degrees, creates a local Wi-Fi network, and transmits measurements through WebSockets.
 
-A separate algorithm designed to detect and analyze gait cycles during sprinting.
+**[app.js](Web_Server_FINAL/data/app.js)**
 
-**3. [`lib/gaitSimilarity.ts`](lib/gaitSimilarity.ts) — Gait Comparison**
+Handles live wireless data reception, real-time graphing, session recording, local storage, and data exporting.
 
-Contains mathematical methods for aligning and comparing gait cycles, including root mean square error (RMSE) calculations.
+### 2. Gait Analysis Algorithms
 
-**4. [`lib/analytics.ts`](lib/analytics.ts) and [`lib/analyticsPro.ts`](lib/analyticsPro.ts) — Movement Metrics**
+**[gaitAnalysis.ts](The%20Website/lib/gaitAnalysis.ts)**
 
-Calculates range of motion, angular velocity, acceleration, and other movement measurements.
+My main gait-analysis algorithm. Detects individual walking gait cycles, filters irregular measurements, normalizes cycles, and calculates an average gait pattern.
 
-**5. [`app/online/gait-lab/page.tsx`](app/online/gait-lab/page.tsx) — Gait Visualization**
+**[sprintGaitAnalysis.ts](The%20Website/lib/sprintGaitAnalysis.ts)**
 
-Connects the analysis algorithms to the website's interactive gait graphs.
+A separate algorithm designed to identify and analyze gait cycles during sprinting.
 
-## Technology
+**[gaitSimilarity.ts](The%20Website/lib/gaitSimilarity.ts)**
 
-- Next.js, React, and TypeScript
-- Firebase for data storage
-- Recharts for data visualization
-- Custom algorithms for gait analysis
+Compares recorded gait cycles using mathematical alignment and root mean square error (RMSE) calculations.
 
+### 3. Movement Metrics
+
+**[analytics.ts](The%20Website/lib/analytics.ts)** and **[analyticsPro.ts](The%20Website/lib/analyticsPro.ts)**
+
+Calculate range of motion, angular velocity, acceleration, and other measurements from recorded knee movement.
+
+### 4. Website and Visualization
+
+**[Gait Lab](The%20Website/app/online/gait-lab/page.tsx)**
+
+Connects the gait-analysis algorithms to interactive graphs for examining recorded movement.
+
+**[Gait Similarity](The%20Website/app/online/gait-similarity/page.tsx)**
+
+Allows users to compare gait patterns between recording sessions.
+
+## Technologies Used
+
+- **Hardware:** XIAO ESP32-C3, AS5600 magnetic rotary encoder
+- **Firmware:** C++, Arduino, Wi-Fi, WebSockets
+- **Website:** Next.js, React, TypeScript
+- **Data:** Firebase, JavaScript, custom gait-analysis algorithms
 
 ## Project Goal
 
-I developed KnexFlex after experiencing ACL injuries and wanting to make gait analysis more accessible and affordable. This website connects the device's measurements to tools for understanding knee movement and tracking changes over time.
+After experiencing multiple ACL injuries, I developed KnexFlex to make knee-motion tracking and gait analysis more affordable and accessible. The project combines mechanical design, embedded electronics, and software to turn raw knee-angle measurements into meaningful movement data.
 
-**Recommended starting point: `lib/gaitAnalysis.ts`**
+**Recommended starting points: [Web_Server.ino](Web_Server_FINAL/Web_Server.ino) and [gaitAnalysis.ts](The%20Website/lib/gaitAnalysis.ts).**
