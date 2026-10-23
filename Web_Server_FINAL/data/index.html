@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KnexFlex – Offline Live</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<main class="container">
+  <header class="header">
+    <div>
+      <h1>Offline Live</h1>
+      <p>Live angle streaming directly from your KnexFlex device.</p>
+    </div>
+    <div class="pill" id="netHint">Connect to <b>KnexFlex</b> Wi-Fi</div>
+  </header>
+
+  <section class="grid">
+    <!-- Connection -->
+    <div class="card">
+      <div class="cardHead">
+        <h2>Connection</h2>
+        <span id="status" class="status disconnected">Disconnected</span>
+      </div>
+      <p class="muted">
+        This page connects to <b>ws://192.168.4.1:81</b>. If you’re not on the device Wi-Fi, data won’t stream.
+      </p>
+      <div class="row">
+        <button class="btn outline" id="reconnectBtn">Reconnect</button>
+        <span class="muted small" id="lastMsg">Last update: —</span>
+      </div>
+    </div>
+
+    <!-- Live -->
+    <div class="card">
+      <div class="cardHead">
+        <h2>Live Angle</h2>
+        <span class="muted small" id="hz">— Hz</span>
+      </div>
+      <div class="angle" id="angle">--</div>
+      <div class="muted center" id="samples">—</div>
+
+      <div class="chartWrap">
+        <canvas id="liveChart" width="800" height="220"></canvas>
+      </div>
+
+      <div class="controls">
+        <button id="startBtn" class="btn primary">Start Recording</button>
+        <button id="stopBtn" class="btn danger hidden">Stop Recording</button>
+        <button id="saveBtn" class="btn outline" disabled>Save Session</button>
+      </div>
+    </div>
+    <div class="scoreBox center">
+      <div class="muted small">Live score vs healthy gait</div>
+      <div id="score" class="score">--</div>
+      <div id="scoreHint" class="muted small">Waiting for enough walking data...</div>
+    </div>
+  </section>
+
+  <!-- Leg Selection -->
+  <div class="card">
+    <div class="cardHead">
+      <h2>Leg Selection</h2>
+      <span class="muted small">Applied when saving</span>
+    </div>
+    <div class="controls">
+      <button id="leftLegBtn" class="btn primary">Left Leg</button>
+      <button id="rightLegBtn" class="btn outline">Right Leg</button>
+    </div>
+    <p class="muted small">
+      This does not affect live display or charts.
+      It is applied only when the session is saved.
+    </p>
+  </div>
+
+  <!-- Sessions -->
+  <section class="card">
+    <div class="cardHead">
+      <h2>Local Session Documents</h2>
+      <div class="row">
+        <button class="btn outline" id="exportAllBtn">Export All</button>
+        <button class="btn outline" id="importHintBtn">How to Upload Online</button>
+        <button class="btn ghost danger" id="clearAllBtn">Clear</button>
+      </div>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="muted small">Saved sessions (on this device/browser at 192.168.4.1)</div>
+        <div id="sessionList" class="list"></div>
+        <div id="empty" class="muted small padTop">No local sessions yet.</div>
+      </div>
+
+      <div class="doc" id="docPane">
+        <div class="muted small">Select a session to view its document.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer muted">
+    Tip: To transfer to the online dashboard, export a session (or all) and import on the online site.
+  </footer>
+</main>
+
+<dialog id="modal" class="modal">
+  <div class="modalBody">
+    <h3 id="modalTitle">Modal</h3>
+    <div id="modalContent" class="muted"></div>
+    <div class="row right">
+      <button id="closeModalBtn" class="btn outline">Close</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="/app.js"></script>
+</body>
+</html>
