@@ -1,32 +1,24 @@
-// ================================
-// KnexFlex – Offline Live (FIXED)
-// ================================
 
-// IMPORTANT: MUST remain exactly the same
 const WS_URL = "ws://192.168.4.1:81";
 
 // Storage key
 const KEY = "knexflex_offline_docs_v2";
 
-// ---------------- state ----------------
 let ws;
 let recording = false;
 let buffer = [];
 let lastUpdateMs = null;
 let legMultiplier = 1; // +1 = left, -1 = right
 
-// Live chart
 const LIVE_MAX_POINTS = 240;
 let livePoints = [];
 
-// ---------------- live score ----------------
 const SCORE_MAX = 1000;
 const SCORE_MIN_SAMPLES = 120;
 const SCORE_RECALC_EVERY = 6;
 let scoreMsgCounter = 0;
 let smoothedScore = null;
 
-// Healthy average gait cycle
 const HEALTHY_AVERAGE_CYCLE = [
   8.90, 10.27, 11.65, 13.03, 14.26, 15.30, 16.20, 16.94, 17.43, 17.67,
   17.71, 17.57, 17.31, 16.90, 16.35, 15.71, 14.94, 14.09, 13.18, 12.20,
@@ -40,7 +32,6 @@ const HEALTHY_AVERAGE_CYCLE = [
   13.27, 9.53, 6.28, 3.80, 2.58, 2.57, 3.28, 4.29, 4.98, 5.84
 ];
 
-// ---------------- DOM ----------------
 const angleEl = document.getElementById("angle");
 const statusEl = document.getElementById("status");
 const samplesEl = document.getElementById("samples");
@@ -71,7 +62,6 @@ const closeModalBtn = document.getElementById("closeModalBtn");
 const scoreEl = document.getElementById("score");
 const scoreHintEl = document.getElementById("scoreHint");
 
-// ---------------- helpers ----------------
 function safeParse(s, fallback) {
   try { return s ? JSON.parse(s) : fallback; } catch { return fallback; }
 }
@@ -205,7 +195,6 @@ function computeStats(samples) {
   return { min, max, rom: max - min, mean, count: samples.length };
 }
 
-// ---------------- live chart ----------------
 const canvas = document.getElementById("liveChart");
 const ctx = canvas.getContext("2d");
 
@@ -304,7 +293,6 @@ function exportAll() {
   );
 }
 
-// ---------------- modal ----------------
 function openModal(title, html) {
   modalTitle.textContent = title;
   modalContent.innerHTML = html;
@@ -410,7 +398,6 @@ saveBtn.onclick = () => {
     title: "Session " + fmtDate(Date.now()),
     samples: buffer,
 
-    // ✅ REQUIRED FOR ONLINE IMPORT
     source: "offline",
     leg: legMultiplier === 1 ? "left" : "right",
     schemaVersion: 1
