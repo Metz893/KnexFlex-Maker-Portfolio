@@ -1,8 +1,11 @@
 # KnexFlex — Knee Motion Tracking and Gait Analysis
 **Developed by Andrew Metz**
+I independently designed and assembled the wearable hardware, developed the gait-analysis methodology, and integrated the electronics and software into a functioning rehabilitation prototype.
 
 KnexFlex is an affordable wearable device I developed to measure knee movement and analyze gait patterns during rehabilitation. The system combines an ESP32 microcontroller, magnetic rotary encoder, wireless data transmission, and custom gait-analysis software.
 
+### Note
+AI tools were used during portions of software development to help implement, debug, and refine code as well as some structural/design components of the website itself. I independently developed the underlying algorithms, mathematical formulas, and hardware design based on research and personally tested and iterated the completed system into the hardware.
 ## Where to Look
 
 For MIT Maker Portfolio reviewers, I recommend focusing on these files:
