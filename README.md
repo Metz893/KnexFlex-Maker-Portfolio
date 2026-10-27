@@ -7,7 +7,7 @@
 
 ### Note
 
-AI tools were extensively utilized to assist in writing, debugging, and refining the software, as well as developing some design components of the website. However, I independently researched and developed the underlying algorithms, mathematical formulas, and hardware design to be implemented through code. I directed the development process, made the engineering decisions, and personally assembled, tested, integrated, and iteratively refined the complete system.
+AI tools were utilized to assist in writing, debugging, and refining the software, as well as developing some design components of the website. However, I independently researched and developed the underlying algorithms, mathematical formulas, and hardware design to be implemented through code. I directed the development process, made the engineering decisions, and personally assembled, tested, integrated, and iteratively refined the complete system.
 
 ## Where to Look
 
