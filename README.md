@@ -6,7 +6,8 @@
 - KnexFlex is an affordable wearable device I developed to measure knee movement and analyze gait patterns during rehabilitation. The system combines an ESP32 microcontroller, magnetic rotary encoder, wireless data transmission, and custom gait-analysis software.
 
 ### Note
-AI tools were used during portions of software development to help implement, debug, and refine code as well as some structural/design components of the website itself. I independently developed the underlying algorithms, mathematical formulas, and hardware design based on research and personally tested and iterated the completed system.
+
+AI tools were extensively utilized to assist in writing, debugging, and refining the software, as well as developing some design components of the website. However, I independently researched and developed the underlying algorithms, mathematical formulas, and hardware design to them be implemented through code. I directed the development process, made the engineering decisions, and personally assembled, tested, integrated, and iteratively refined the complete system.
 
 ## Where to Look
 
